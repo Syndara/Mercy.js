@@ -14,3 +14,5 @@ Mercy is a very basic bot currently, but I have hopes that it'll develop into so
 [Discord.js](https://github.com/hydrabolt/discord.js/)
 
 [Node.js Tools for Visual Studio](https://www.visualstudio.com/en-us/features/node-js-vs.aspx)
+
+[Cleverbot-node](https://github.com/fojas/cleverbot-node)
