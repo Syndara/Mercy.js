@@ -16,9 +16,6 @@
 
     TO DO NEXT:
         Admin functionality.
-
-    THIS IS THE PERSONAL VERSION, NOT THE GITHUB VERSION, NOT THE PUBLIC VERSION.  PRIVATE
-    CODE FOLLOWS, KEEP IT THAT WAY.
 */
 
 
@@ -54,7 +51,7 @@ var adminPre = "!";
 var maxCount = 0;
 
 bot.on('ready', function () {
-    console.log(bot.username + " online @ ");
+    console.log(bot.username + " online @ " + Date());
     if (debugMode === 1) {
         console.log(bot.servers[servID].roles);
     } else {
