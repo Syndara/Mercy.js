@@ -18,13 +18,6 @@
         Admin functionality.
 */
 
-
-// The block here grabs the neccesary ID's.
-var servID = "<SERVER ID>"
-var staffID = "<STAFF ID>"
-var opID = "<OP ID>"
-var safeOPID = "<SAFEOP ID>"
-
 // auth.json is used to store token information in token : "<Your Token>".
 var AuthInfo = require("./auth.json");
 // List of quotes
@@ -33,13 +26,13 @@ var quotes = require("./quotes.json");
 var Cleverbot = require('cleverbot-node');
 cleverBot = new Cleverbot;
 
-// Debug mode: If this is set to 1, the list of roles with their permissions and IDs will be printed to the console.
+// In Debug roles will be printed to console.
 var debugMode = 0
 
 // Neccesary dependency.
 var DiscordClient = require('discord.io');
 
-// Starting the bot with the given token.
+// Starting the bot with the supplied token.
 var bot = new DiscordClient({
     autorun: true,
     token: AuthInfo.token
@@ -48,7 +41,6 @@ var bot = new DiscordClient({
 // Setting command prefixes.
 var userPre = "~";
 var adminPre = "!";
-var maxCount = 0;
 
 bot.on('ready', function () {
     console.log(bot.username + " online @ " + Date());
