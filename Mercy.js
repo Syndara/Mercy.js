@@ -16,6 +16,9 @@
 
     TO DO NEXT:
         Admin functionality.
+
+    THIS IS THE PERSONAL VERSION, NOT THE GITHUB VERSION, NOT THE PUBLIC VERSION.  PRIVATE
+    CODE FOLLOWS, KEEP IT THAT WAY.
 */
 
 
@@ -27,6 +30,11 @@ var safeOPID = "<SAFEOP ID>"
 
 // auth.json is used to store token information in token : "<Your Token>".
 var AuthInfo = require("./auth.json");
+// List of quotes
+var quotes = require("./quotes.json");
+
+var Cleverbot = require('cleverbot-node');
+cleverBot = new Cleverbot;
 
 // Debug mode: If this is set to 1, the list of roles with their permissions and IDs will be printed to the console.
 var debugMode = 0
@@ -41,11 +49,12 @@ var bot = new DiscordClient({
 });
 
 // Setting command prefixes.
-var userPre = "~"
-var adminPre = "!"
+var userPre = "~";
+var adminPre = "!";
+var maxCount = 0;
 
 bot.on('ready', function () {
-    console.log(bot.username + "Online, Healing Stream Engaged!!");
+    console.log(bot.username + " online @ ");
     if (debugMode === 1) {
         console.log(bot.servers[servID].roles);
     } else {
@@ -91,6 +100,27 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
         
     }
 
+    if (message === userPre + "Leeki") {
+        bot.sendMessage({
+            to: channelID,
+            message: quotes.Leeki
+        })
+    }
+
+    if (message === userPre + "shrug") {
+        bot.sendMessage({
+            to: channelID,
+            message: "¯\\_(ツ)_/¯"
+        });
+    }
+	
+	if (message === userPre + "ayy") {
+	    bot.sendMessage({
+	        to: channelID,
+	        message: quotes.ayy
+	    });
+	}
+
     // Array of all possible 8-ball responses.
     var eightBall = ["It is certain.",
                      "It is decidely so.",
@@ -133,6 +163,25 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
         bot.sendMessage({
             to: channelID,
             message: replyID + "You asked: " + question + "I respond with: " + response
+        });
+    }
+
+    if (messageParts[0] === userPre) {
+        // Reconstruct phrase.
+        var statement = "";
+        for (i = 1; i <= messageParts.length; i++) {
+            if (i !== messageParts.length) {
+                statement += messageParts[i] + " ";
+            }
+        }
+        
+        Cleverbot.prepare(function () {
+            cleverBot.write(statement, function (response) {
+                bot.sendMessage({
+                    to: channelID,
+                    message: response.message
+                });
+            });
         });
     }
 });
