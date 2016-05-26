@@ -13,7 +13,7 @@
 		{"discord.io" : "izy521/discord.io"
 		,"cleverbot-node" : "fojas/cleverbot-node"
 		}
-  }
+  },
   
   "repository": {
     "type": "git",
