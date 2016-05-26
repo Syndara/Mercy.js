@@ -3,8 +3,8 @@
   "version": "0.0.2",
   "description": "A simple bot for Discord for testing node-js language and features as well as supplying a useful bot for personal purposes.",
   "main": "Mercy.js",
-  "node": "4.4.4"
-  "npm": "2.15.1"
+  "node": "4.4.4",
+  "npm": "2.15.1",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
