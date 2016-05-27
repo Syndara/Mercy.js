@@ -185,7 +185,6 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		var request = require('request');
 		request(theURL, function (error, response, body) {
 		if (!error && response.statusCode == 200) {
-			console.log(body);
 			var values = body.split("\"");
 			var cat = values[3];
 			
