@@ -20,8 +20,6 @@
 
 // auth.json is used to store token information in token : "<Your Token>".
 var AuthInfo = require("./auth.json");
-// List of quotes
-var quotes = require("./quotes.json");
 
 var Cleverbot = require('cleverbot-node');
 cleverBot = new Cleverbot;
@@ -70,45 +68,12 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
         var replyID = "<@" + userID + "> "
     }
 
-    // Simple hello back script.
-    if (message === "Hi Mercy!") {
-        if (typeof userID !== 'undefined') {
-            console.log("I was greeted!");
-            bot.sendMessage({
-                to: channelID,
-                message: "Hello " + replyID + "!"
-            });
-        }
-
-        else {
-            bot.sendMessage({
-                to: channelID,
-                message: "Hiya!"
-            });
-        }
-        
-    }
-
-    if (message === userPre + "Leeki") {
-        bot.sendMessage({
-            to: channelID,
-            message: quotes.Leeki
-        })
-    }
-
     if (message === userPre + "shrug") {
         bot.sendMessage({
             to: channelID,
             message: "¯\\_(ツ)_/¯"
         });
     }
-	
-	if (message === userPre + "ayy") {
-	    bot.sendMessage({
-	        to: channelID,
-	        message: quotes.ayy
-	    });
-	}
 
     // Array of all possible 8-ball responses.
     var eightBall = ["It is certain.",
