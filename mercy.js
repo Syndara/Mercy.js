@@ -32,8 +32,12 @@ var debugMode = 0
 // Neccesary dependency.
 var DiscordClient = require('discord.io');
 var request = require('request');
-var moment = require('moment-timezone');
-moment().tz("America/New_York").format();
+
+// Keep app awake
+var http = require("http");
+setInterval(function() {
+    http.get("http://<your app name>.herokuapp.com");
+}, 300000); // every 5 minutes (300000)
 
 // HEROKU THINGS
 var express = require('express');
