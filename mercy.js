@@ -54,7 +54,7 @@ app.listen(app.get('port'), function() {
 // Starting the bot with the supplied token.
 var bot = new DiscordClient({
     autorun: true,
-    token: AuthInfo.token
+    token: process.env.TOKEN
 });
 
 // Setting command prefixes.
