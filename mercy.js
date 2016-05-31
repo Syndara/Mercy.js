@@ -222,7 +222,7 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 	
 	if (messageParts[0] === userPre + "mission") {
 		var now = new Date();
-		var timeUntil = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 21, 0, 0, 0) - now;
+		var timeUntil = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 1, 0, 0, 0) - now;
 		
 		if (timeUntil < 0)
 			timeUntil += 86400000; // it's after 9:00PM, try 9:00PM tomorrow.
@@ -245,7 +245,7 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		
 		reminderCount++;
 		var now = new Date();
-		var timeUntil = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 20, 30, 0, 0) - now;
+		var timeUntil = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 30, 0, 0) - now;
 		
 		if (timeUntil < 0) {
 			timeUntil += 86400000; // it's after 9:00PM, try 9:00PM tomorrow.
