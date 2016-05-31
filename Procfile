@@ -1,1 +1,1 @@
-web: node Mercy.js
+web: node mercy.js
