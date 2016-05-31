@@ -254,10 +254,7 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		
 		setTimeout(guildReminder, timeUntil, channelID)
 		
-		bot.sendMessage({
-			to: channelID,
-			message: "Guild reminder has been set."
-		})
+		console.log("Reminder has been set");
 	}
 	
 	// Simple function just returns a date object at the current time.
