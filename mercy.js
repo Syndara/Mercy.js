@@ -36,8 +36,9 @@ var request = require('request');
 // Keep app awake
 var http = require("http");
 setInterval(function() {
-    http.get("https://mercy-js.herokuapp.com/");
-}, 300000); // every 5 minutes (300000)
+    http.get("http://mercy-js.herokuapp.com/");
+	console.log("pinged");
+}, 5000); // every 5 minutes (300000)
 
 // HEROKU THINGS
 var express = require('express');
