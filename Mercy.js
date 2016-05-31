@@ -31,8 +31,9 @@ var debugMode = 0
 
 // Neccesary dependency.
 var DiscordClient = require('discord.io');
-
 var request = require('request');
+var moment = require('moment-timezone');
+moment().tz("America/New_York").format();
 
 // Starting the bot with the supplied token.
 var bot = new DiscordClient({
@@ -91,6 +92,7 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
         
     }
 
+	// Guild use only.
     if (message === userPre + "Leeki") {
         bot.sendMessage({
             to: channelID,
@@ -98,6 +100,7 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
         })
     }
 
+	// Pastes the shrug emote in chat.
     if (message === userPre + "shrug") {
         bot.sendMessage({
             to: channelID,
@@ -105,6 +108,7 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
         });
     }
 	
+	// To be implemented.
 	if (message === userPre + "ayy") {
 	    bot.sendMessage({
 	        to: channelID,
@@ -157,6 +161,7 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
         });
     }
 
+	// This function reconstructs the user's message and parses it with cleverbot-node.
     if (messageParts[0] === userPre) {
         // Reconstruct phrase.
         var statement = "";
@@ -166,6 +171,7 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
             }
         }
         
+		// Send the formatted string to cleverbot-node and send the response to the channel.
         Cleverbot.prepare(function () {
             cleverBot.write(statement, function (response) {
                 bot.sendMessage({
@@ -176,11 +182,27 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
         });
     }
 	
+	// Calls the cat function to get a random cat image.
 	if (messageParts[0] === userPre + "cat") {
 		var cat = getCats("http://www.random.cat/meow");
 		
 	}
 	
+	// Posts the current local time of the bot in chat.
+	if (messageParts[0] === userPre + "time") {
+		bot.sendMessage({
+			to: channelID,
+			message: "My local time is: " + getTime()
+		})
+	}
+	
+	// Simple function just returns a date object at the current time.
+	function getTime() {
+		return new Date();
+	}
+	
+	// This function sends an HTTP GET request to a website to return the html source.
+	// I then parse this website to get the URL of a random cat image and paste it in chat.
 	function getCats(theURL) {
 		var request = require('request');
 		request(theURL, function (error, response, body) {
