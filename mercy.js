@@ -38,7 +38,7 @@ var http = require("http");
 setInterval(function() {
     http.get("http://mercy-js.herokuapp.com/");
 	console.log("pinged");
-}, 30000); // every 5 minutes (300000)
+}, 300000); // every 5 minutes (300000)
 
 // HEROKU THINGS
 var express = require('express');
