@@ -35,6 +35,22 @@ var request = require('request');
 var moment = require('moment-timezone');
 moment().tz("America/New_York").format();
 
+// HEROKU THINGS
+var express = require('express');
+var app = express();
+
+app.set('port', (process.env.PORT || 5000));
+
+app.use(express.static(__dirname + '/public'));
+
+// views is directory for all template files
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
+
 // Starting the bot with the supplied token.
 var bot = new DiscordClient({
     autorun: true,
@@ -44,6 +60,7 @@ var bot = new DiscordClient({
 // Setting command prefixes.
 var userPre = "~";
 var adminPre = "!";
+var reminderCount = 0;
 
 bot.on('ready', function () {
     console.log(bot.username + " online @ " + Date());
@@ -61,12 +78,10 @@ bot.on('disconnected', function () {
 
 bot.on('message', function (user, userID, channelID, message, rawEvent) {
 
-    // For parsing multiple arguments.
+	if (userID === bot.id) return;
+	
+	// For parsing multiple arguments.
     var messageParts = message.split(" ");
-
-    if (userID === bot.id) {
-        return;
-    }
 
     // If userID is defined, define replyID.
     if (typeof userID !== 'undefined') {
@@ -164,12 +179,7 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 	// This function reconstructs the user's message and parses it with cleverbot-node.
     if (messageParts[0] === userPre) {
         // Reconstruct phrase.
-        var statement = "";
-        for (i = 1; i <= messageParts.length; i++) {
-            if (i !== messageParts.length) {
-                statement += messageParts[i] + " ";
-            }
-        }
+        statement = constructPhrase(messageParts);
         
 		// Send the formatted string to cleverbot-node and send the response to the channel.
         Cleverbot.prepare(function () {
@@ -188,11 +198,65 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		
 	}
 	
+	if (messageParts[0] === userPre + "remindMe") {
+		statement = constructPhrase(messageParts);
+		
+		var time = messageParts[1];
+		
+		if (isFinite(time))
+			setTimeout(sendReminder, time, statement, replyID);
+		else
+			bot.sendMessage({
+				to: channelID,
+				message: "Argument was not a valid number, try ~remindMe 15 Remind Me! for a 15 minute reminder."
+			})
+	}
+	
 	// Posts the current local time of the bot in chat.
 	if (messageParts[0] === userPre + "time") {
 		bot.sendMessage({
 			to: channelID,
 			message: "My local time is: " + getTime()
+		})
+	}
+	
+	if (messageParts[0] === userPre + "mission") {
+		var now = new Date();
+		var timeUntil = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 21, 0, 0, 0) - now;
+		
+		if (timeUntil < 0)
+			timeUntil += 86400000; // it's after 9:00PM, try 9:00PM tomorrow.
+
+
+		var hours = ((timeUntil / (1000*60*60)) % 24);
+		var minutes = ((timeUntil / (1000*60)) % 60);
+		var seconds = (timeUntil / 1000) % 60;
+		
+		bot.sendMessage({
+			to: channelID,
+			message: "There are " + Math.floor(hours) + " hours, " + Math.floor(minutes) + " minutes, and " + Math.floor(seconds) + " seconds until the guild mission starts"
+		})
+	}
+	
+	if (messageParts[0] === userPre + "remind") {
+		
+		if (reminderCount > 0)
+			return
+		
+		reminderCount++;
+		var now = new Date();
+		var timeUntil = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 20, 30, 0, 0) - now;
+		
+		if (timeUntil < 0) {
+			timeUntil += 86400000; // it's after 9:00PM, try 9:00PM tomorrow.
+			reminderCount = 0;
+		}
+		
+		setTimeout(guildReminder, timeUntil, channelID)
+		
+		bot.sendMessage({
+			to: channelID,
+			message: "Guild reminder has been set."
 		})
 	}
 	
@@ -219,6 +283,32 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 			});
 			
 		}
-	})
-}
+		})
+	}
+	
+	// Reconstructs the user's phrase.
+	function constructPhrase(userPhrase) {
+		var statement = "";
+        for (i = 1; i <= userPhrase.length; i++) {
+            if (i !== userPhrase.length) {
+                statement += userPhrase[i] + " ";
+            }
+        }
+		
+		return statement;
+	}
+	
+	function sendReminder(statement, replyID) {
+		bot.sendMessage({
+			to: channelID,
+			message: replyID + "Reminder at" + new Date() + " " + statement
+		})
+	}
+	
+	function guildReminder(channelID) {
+		bot.sendMessage({
+			to: channelID,
+			message: "@everyone the guild mission will begin in 30 minutes!"
+		})
+	}
 })
