@@ -2,7 +2,7 @@
   "name": "mercy-node",
   "version": "2.0.0",
   "description": "A simple boy for Discord",
-  "main": "Mercy.js",
+  "main": "mercy.js",
   "dependencies": {
     "cleverbot-node": "^0.2.2",
     "discord.io": "^1.11.1",
