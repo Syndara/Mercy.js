@@ -38,7 +38,7 @@ var http = require("http");
 setInterval(function() {
     http.get("http://mercy-js.herokuapp.com/");
 	console.log("pinged");
-}, 300000); // every 5 minutes (300000)
+}, 5000); // every 5 minutes (300000)
 
 // HEROKU THINGS
 var express = require('express');
@@ -308,9 +308,13 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 	}
 	
 	function guildReminder(channelID) {
+		var id = channelID;
+		
 		bot.sendMessage({
 			to: channelID,
 			message: "@everyone the guild mission will begin in 30 minutes!"
 		})
+		
+		setInterval(guildReminder, 86400000, id)
 	}
 })
