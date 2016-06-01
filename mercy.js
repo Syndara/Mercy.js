@@ -262,6 +262,15 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		console.log("Reminder has been set");
 	}
 	
+	if (messageParts[0] === userPre + "info") {
+		bot.sendMessage({
+			to: channelID,
+			message: "Hello.  I am Mercy, created by Syndara#4651.  I'm an open source node-js Discord bot."  
+			+ "Progress and documentation can be found for me at https://github.com/Syndara/Mercy.js.  I'm "
+			+ "running on Heroku."
+		})
+	}
+	
 	// Simple function just returns a date object at the current time.
 	function getTime() {
 		return new Date();
