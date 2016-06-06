@@ -126,10 +126,15 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
     
     // Tells septapus to make a comic of X length
     if (messageParts[0] === userPre + "comic") {		
-	bot.sendMessage({
-		to: channelID,
-		message: "<@127296623779774464> comic " + messageParts[1]
-	})
+	bot.deleteMessage({
+			channel: channelID,
+			messageID: rawEvent.d.id
+		});	
+		
+		setTimeout(bot.sendMessage({
+			to: channelID,
+			message: "<@127296623779774464> comic " + messageParts[1]
+		}), 1000);
     }
 
 	// Guild use only.
