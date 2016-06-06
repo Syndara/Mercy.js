@@ -125,10 +125,10 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
     }
     
     // Tells septapus to make a comic of X length
-    if (message === userPre + "comic") {
+    if (messageParts[0] === userPre + "comic") {		
 	bot.sendMessage({
 		to: channelID,
-		message: "<@127296623779774464> comic " +messageParts[1]
+		message: "<@127296623779774464> comic " + messageParts[1]
 	})
     }
 
