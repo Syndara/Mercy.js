@@ -1,4 +1,5 @@
-﻿/* 
+﻿
+/* 
     Mercy.js
     Copyright (C) 2016 - Wesley Rhodes
     This software may be modified and distributed under the terms
@@ -79,6 +80,10 @@ bot.on('ready', function () {
 bot.on('disconnected', function () {
     console.log(bot.username + " (" + bot.id + ") disconnected!");
     process.exit(1);
+});
+
+bot.setPresence({
+    game: "Overwatch"
 });
 
 bot.on('message', function (user, userID, channelID, message, rawEvent) {
@@ -259,7 +264,10 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		
 		setTimeout(guildReminder, timeUntil, channelID)
 		
-		console.log("Reminder has been set");
+	    bot.sendMessage({
+		to: channelID,
+		message: "Reminder has been set."
+	    });
 	}
 	
 	if (messageParts[0] === userPre + "info") {
@@ -296,6 +304,8 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		}
 		})
 	}
+
+    
 	
 	// Reconstructs the user's phrase.
 	function constructPhrase(userPhrase) {
@@ -323,6 +333,8 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 			to: channelID,
 			message: "@everyone the guild mission will begin in 30 minutes!"
 		})
+
+	    reminderCount = 0;
 		
 		setInterval(guildReminder, 86400000, id)
 	}
