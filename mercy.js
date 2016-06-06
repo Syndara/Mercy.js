@@ -131,10 +131,7 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 			messageID: rawEvent.d.id
 		});	
 		
-		setTimeout(bot.sendMessage({
-			to: channelID,
-			message: "<@127296623779774464> comic " + messageParts[1]
-		}), 1000);
+		setTimeout(makeComic, 1000, channelID, messageParts);
     }
 
 	// Guild use only.
@@ -337,6 +334,13 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
         }
 		
 		return statement;
+	}
+	
+	function makeComic(channelID, messageParts) {
+		bot.sendMessage({
+			to: channelID,
+			message: "<@127296623779774464> comic " + messageParts[1]
+		})
 	}
 	
 	function sendReminder(statement, replyID) {
