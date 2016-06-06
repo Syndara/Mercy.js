@@ -117,10 +117,19 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
         
     }
     
+    // Set Mercy's Game
     if (message === userPre + "set") {
 	bot.setPresence({
 		game: "Overwatch"
 	});
+    }
+    
+    // Tells septapus to make a comic of X length
+    if (message === userPre + "comic") {
+	bot.sendMessage({
+		to: channelID,
+		message: "<@127296623779774464> comic " +messageParts[1]
+	})
     }
 
 	// Guild use only.
