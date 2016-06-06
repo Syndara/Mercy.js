@@ -116,6 +116,12 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
         }
         
     }
+    
+    if (message === userPre + "set") {
+	bot.setPresence({
+		game: "Overwatch"
+	});
+    }
 
 	// Guild use only.
     if (message === userPre + "Leeki") {
@@ -187,10 +193,10 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
     }
 
 	// This function reconstructs the user's message and parses it with cleverbot-node.
-    if (messageParts[0] === userPre) {
+    if (message.includes("<@183014333742186497>")) {
         // Reconstruct phrase.
         statement = constructPhrase(messageParts);
-        
+		statement.replace("<@183014333742186497>", "");       
 		// Send the formatted string to cleverbot-node and send the response to the channel.
         Cleverbot.prepare(function () {
             cleverBot.write(statement, function (response) {
