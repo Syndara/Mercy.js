@@ -204,7 +204,7 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
     }
 
 	// This function reconstructs the user's message and parses it with cleverbot-node.
-    if (message.includes("<@183014333742186497>") && userID !=== "@127296623779774464") {
+    if (message.includes("<@183014333742186497>") && userID !== "@127296623779774464") {
         // Reconstruct phrase.
         statement = constructPhrase(messageParts);
 		statement.replace("<@183014333742186497>", "");       
