@@ -157,6 +157,14 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 	        message: quotes.ayy
 	    });
 	}
+	
+	if (message === adminPre + "music") {
+		bot.joinVoiceChannel(channelID, function() {
+			bot.getAudioContext({ channel: channelID, stereo: true}, function(stream) {
+				stream.playAudioFile('what.wav');
+			}
+		});
+	}
 
     // Array of all possible 8-ball responses.
     var eightBall = ["It is certain.",
