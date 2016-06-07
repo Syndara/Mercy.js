@@ -162,7 +162,7 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		bot.joinVoiceChannel(channelID, function() {
 			bot.getAudioContext({ channel: channelID, stereo: true}, function(stream) {
 				stream.playAudioFile('what.wav');
-			}
+			})
 		});
 	}
 
