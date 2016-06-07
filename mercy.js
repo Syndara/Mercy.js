@@ -165,6 +165,174 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 			})
 		});
 	}
+	
+	if (message === adminPre + "WHAT") {
+		bot.joinVoiceChannel(151811925116846080, function() {
+			bot.getAudioContext({ channel: 151811925116846080, stereo: true}, function(stream) {
+				stream.playAudioFile('what.wav');
+			})
+		});
+	}
+	
+	if (message === adminPre + "MAPLE") {
+		bot.joinVoiceChannel(151811925116846080, function() {
+			bot.getAudioContext({ channel: 151811925116846080, stereo: true}, function(stream) {
+				stream.playAudioFile('MAPLE.wav');
+			})
+		});
+	}
+	
+	if (message === adminPre + "doot") {
+		bot.joinVoiceChannel(151811925116846080, function() {
+			bot.getAudioContext({ channel: 151811925116846080, stereo: true}, function(stream) {
+				stream.playAudioFile('doot.mp3');
+			})
+		});
+	}
+	
+	if (message === adminPre + "rev") {
+		bot.joinVoiceChannel(151811925116846080, function() {
+			bot.getAudioContext({ channel: 151811925116846080, stereo: true}, function(stream) {
+				stream.playAudioFile('rev.mp3');
+			})
+		});
+	}
+	
+	if (message === adminPre + "dailyDose") {
+		bot.joinVoiceChannel(151811925116846080, function() {
+			bot.getAudioContext({ channel: 151811925116846080, stereo: true}, function(stream) {
+				stream.playAudioFile('dailyDose.mp3');
+			})
+		});
+	}
+	
+	if (message === adminPre + "cosmic") {
+		bot.joinVoiceChannel(151811925116846080, function() {
+			bot.getAudioContext({ channel: 151811925116846080, stereo: true}, function(stream) {
+				stream.playAudioFile('cosmic.mp3');
+			})
+		});
+	}
+	
+	if (message === adminPre + "doubleGoulet") {
+		bot.joinVoiceChannel(151811925116846080, function() {
+			bot.getAudioContext({ channel: 151811925116846080, stereo: true}, function(stream) {
+				stream.playAudioFile('doubleGoul.mp3');
+			})
+		});
+	}
+	
+	if (message === adminPre + "no") {
+		bot.joinVoiceChannel(151811925116846080, function() {
+			bot.getAudioContext({ channel: 151811925116846080, stereo: true}, function(stream) {
+				stream.playAudioFile('No.mp3');
+			})
+		});
+	}
+	
+	if (message === adminPre + "2016") {
+		bot.joinVoiceChannel(151811925116846080, function() {
+			bot.getAudioContext({ channel: 151811925116846080, stereo: true}, function(stream) {
+				stream.playAudioFile('2016.wav');
+			})
+		});
+	}
+	
+	if (message === adminPre + "hiKids") {
+		bot.joinVoiceChannel(151811925116846080, function() {
+			bot.getAudioContext({ channel: 151811925116846080, stereo: true}, function(stream) {
+				stream.playAudioFile('Hi Kids.wav');
+			})
+		});
+	}
+	
+	if (message === adminPre + "yes") {
+		bot.joinVoiceChannel(151811925116846080, function() {
+			bot.getAudioContext({ channel: 151811925116846080, stereo: true}, function(stream) {
+				stream.playAudioFile('YES.mp3');
+			})
+		});
+	}
+	
+	if (message === adminPre + "WHY") {
+		bot.joinVoiceChannel(151811925116846080, function() {
+			bot.getAudioContext({ channel: 151811925116846080, stereo: true}, function(stream) {
+				stream.playAudioFile('WHY.wav');
+			})
+		});
+	}
+	
+	if (message === adminPre + "GARBAGE") {
+		bot.joinVoiceChannel(151811925116846080, function() {
+			bot.getAudioContext({ channel: 151811925116846080, stereo: true}, function(stream) {
+				stream.playAudioFile('GARBAGE.wav');
+			})
+		});
+	}
+	
+	if (message === adminPre + "GOD") {
+		bot.joinVoiceChannel(151811925116846080, function() {
+			bot.getAudioContext({ channel: 151811925116846080, stereo: true}, function(stream) {
+				stream.playAudioFile('OhMyGod.wav');
+			})
+		});
+	}
+	
+	if (message === adminPre + "ECH") {
+		bot.joinVoiceChannel(151811925116846080, function() {
+			bot.getAudioContext({ channel: 151811925116846080, stereo: true}, function(stream) {
+				stream.playAudioFile('ECH.wav');
+			})
+		});
+	}
+	
+	if (message === adminPre + "JPEG") {
+		bot.joinVoiceChannel(151811925116846080, function() {
+			bot.getAudioContext({ channel: 151811925116846080, stereo: true}, function(stream) {
+				stream.playAudioFile('JPEG.wav');
+			})
+		});
+	}
+	
+	if (message === adminPre + "FuckYou") {
+		bot.joinVoiceChannel(151811925116846080, function() {
+			bot.getAudioContext({ channel: 151811925116846080, stereo: true}, function(stream) {
+				stream.playAudioFile('FuckYou.wav');
+			})
+		});
+	}
+	
+	if (message === adminPre + "ass") {
+		bot.joinVoiceChannel(151811925116846080, function() {
+			bot.getAudioContext({ channel: 151811925116846080, stereo: true}, function(stream) {
+				stream.playAudioFile('KissMyAss.wav');
+			})
+		});
+	}
+	
+	if (message === adminPre + "fucked") {
+		bot.joinVoiceChannel(151811925116846080, function() {
+			bot.getAudioContext({ channel: 151811925116846080, stereo: true}, function(stream) {
+				stream.playAudioFile('Fucked.wav');
+			})
+		});
+	}
+	
+	if (message === adminPre + "dead") {
+		bot.joinVoiceChannel(151811925116846080, function() {
+			bot.getAudioContext({ channel: 151811925116846080, stereo: true}, function(stream) {
+				stream.playAudioFile('dead.wav');
+			})
+		});
+	}
+	
+	if (message === adminPre + "hell") {
+		bot.joinVoiceChannel(151811925116846080, function() {
+			bot.getAudioContext({ channel: 151811925116846080, stereo: true}, function(stream) {
+				stream.playAudioFile('hell.wav');
+			})
+		});
+	}
 
     // Array of all possible 8-ball responses.
     var eightBall = ["It is certain.",
