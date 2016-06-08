@@ -21,7 +21,7 @@ Dependencies for the project can be found in my package.json file.  I'm making a
 
 ~8ball [question] asks a question into the eightball.
 
-~ [message] with a space sends a message to cleverbot-node for the bot to respond with.
+Mentioning Mercy and any way prompts her to respond using cleverbot-node.  The message sent to cleverbot is the exact phrase you sent when you mentioned her, but with the @BotName cut out of it.
 
 ~cat pastes a random cat picture in chat from random.cat/meow
 
