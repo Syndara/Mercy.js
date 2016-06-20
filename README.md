@@ -30,3 +30,5 @@ Mentioning Mercy and any way prompts her to respond using cleverbot-node.  The m
 ~mission reminds channel when scheduled mission is (guild use).  (Will eventually be customizable to set a certain time to count down to.
 
 ~remind starts the scheduled reminder for the guild mission (guild use).  This code is a bit sloppy right now but it'll send a reminder at 8:30PM EST then each day after that send the same message.  I DO NOT like how the code works currently, I want to find a much safer and more efficient way to handle this.
+
+~foo has Mercy join your voice channel and play Dog Song from Undertale, this is a very temporary command, and the song is a temporary edition.  (6/20/2016).  In the next few days I want to add a collection of soundbytes that play from "~random" and then some specific sound commands as well.
