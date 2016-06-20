@@ -288,6 +288,18 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		})
 	}
 	
+	if (messageParts[0] === userPre + "foo") {
+		var ch = listVoiceChannels(channelID, userID);
+		bot.joinVoiceChannel(ch, function() {
+			bot.getAudioContext({ channel: ch, stereo: true}, function(stream) {
+			stream.playAudioFile('AIRHORN.mp3');
+		    		stream.once('fileEnd', function() {
+					bot.leaveVoiceChannel(ch);
+		    	});
+		})
+	});
+	}
+	
 	// Simple function just returns a date object at the current time.
 	function getTime() {
 		return new Date();
@@ -353,5 +365,21 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 	    reminderCount = 0;
 		
 		setInterval(guildReminder, 86400000, id)
+	}
+	
+	function listVoiceChannels(server, userID) {
+		var channels = bot.servers[server].channels;
+		var i = 0;
+		for (var channel in channels) {
+			if (channels[channel].type === 'voice') {
+				console.log(channel + " - " + Object.getOwnPropertyNames(channels[channel].members));
+				var users = Object.getOwnPropertyNames(channels[channel].members);
+				
+				for (var i = 0; i < users.length; i++) {
+					if (userID === users[i])
+						return channel;
+				}
+			}
+		}
 	}
 })
