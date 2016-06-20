@@ -292,7 +292,7 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		var ch = listVoiceChannels(channelID, userID);
 		bot.joinVoiceChannel(ch, function() {
 			bot.getAudioContext({ channel: ch, stereo: true}, function(stream) {
-			stream.playAudioFile('AIRHORN.mp3');
+			stream.playAudioFile('./Music/dog.mp3');
 		    		stream.once('fileEnd', function() {
 					bot.leaveVoiceChannel(ch);
 		    	});
