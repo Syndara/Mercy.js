@@ -288,9 +288,18 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		})
 	}
 	
+	MLGSONGS = [
+		"./Music/MLG/2SAD4ME.mp3",
+		"./Music/MLG/NUKE.mp3",
+		"./Music/MLG/SANIC.mp3",
+		"./Music/MLG/SAY.mp3",
+		"./Music/MLG/TRIPLE.mp3",
+		"./Music/MLG/WOMBO.mp3"]
+	
 	if (messageParts[0] === userPre + "MLG") {
 		var ch = listVoiceChannels(channelID, userID);
-		playSong(ch, "./Music/MLG/2SAD4ME.mp3")
+		var song = MLGSONGS[Math.floor(Math.random() * MLGSONGS.length)];
+		playSong(ch, song)
 	}
 	
 	// Simple function just returns a date object at the current time.
