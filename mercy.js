@@ -290,14 +290,7 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 	
 	if (messageParts[0] === userPre + "foo") {
 		var ch = listVoiceChannels(channelID, userID);
-		bot.joinVoiceChannel(ch, function() {
-			bot.getAudioContext({ channel: ch, stereo: true}, function(stream) {
-			stream.playAudioFile('./Music/dog.mp3');
-		    		stream.once('fileEnd', function() {
-					bot.leaveVoiceChannel(ch);
-		    	});
-		})
-	});
+		playSong(ch, "./Music/MLG/2SAD4ME.mp3")
 	}
 	
 	// Simple function just returns a date object at the current time.
@@ -381,5 +374,16 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 				}
 			}
 		}
+	}
+	
+	function playSong(channel, songName) {
+		bot.joinVoiceChannel(ch, function() {
+			bot.getAudioContext({ channel: ch, stereo: true}, function(stream) {
+			stream.playAudioFile('./Music/dog.mp3');
+		    		stream.once('fileEnd', function() {
+					bot.leaveVoiceChannel(ch);
+		    	});
+		})
+	});
 	}
 })
