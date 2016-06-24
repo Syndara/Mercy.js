@@ -288,7 +288,7 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		})
 	}
 	
-	MLGSONGS = [
+	var MLGSONGS = [
 		"./Music/MLG/2SAD4ME.mp3",
 		"./Music/MLG/NUKE.mp3",
 		"./Music/MLG/SANIC.mp3",
