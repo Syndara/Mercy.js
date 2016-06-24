@@ -288,7 +288,7 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		})
 	}
 	
-	if (messageParts[0] === userPre + "foo") {
+	if (messageParts[0] === userPre + "MLG") {
 		var ch = listVoiceChannels(channelID, userID);
 		playSong(ch, "./Music/MLG/2SAD4ME.mp3")
 	}
