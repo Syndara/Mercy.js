@@ -379,7 +379,7 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 	function playSong(channel, songName) {
 		bot.joinVoiceChannel(ch, function() {
 			bot.getAudioContext({ channel: ch, stereo: true}, function(stream) {
-			stream.playAudioFile('songName');
+			stream.playAudioFile(songName);
 		    		stream.once('fileEnd', function() {
 					bot.leaveVoiceChannel(ch);
 		    	});
