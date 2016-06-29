@@ -255,17 +255,10 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		});
 	}
 	
-	if (userID === 151809530047496203 && message.includes("FUCK")) {
+	if (userID === "151809530047496203" && message.includes("FUCK")) {
 		bot.sendMessage({
 			to: channelID,
 			message: "Calm down Nick."
-		});
-	}
-	
-	if (userID === "66611843522633728" && message.includes("sigh")) {
-		bot.sendMessage({
-			to: channelID,
-			message: "Did you fuck me up again?"
 		});
 	}
 	
