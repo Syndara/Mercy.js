@@ -288,6 +288,15 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		})
 	}
 	
+	if (messageParts[0] === userPre + "gay") {
+		bot.sendMessage({
+			to: channelID,
+			file: "./Reaction Images/HAHGay.gif",
+			filename: "HahGay.gif",
+			message: "Hah!  GAAAAAAAAAAAAAAAAAY!"
+		});
+	}
+	
 	var MLGSONGS = [
 		"./Music/MLG/2SAD4ME.mp3",
 		"./Music/MLG/NUKE.mp3",
