@@ -1,4 +1,4 @@
-﻿
+﻿﻿
 /* 
     Mercy.js
     Copyright (C) 2016 - Wesley Rhodes
@@ -239,46 +239,6 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		})
 	}
 	
-	if (messageParts[0] === userPre + "mission") {
-		var now = new Date();
-		var timeUntil = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 1, 0, 0, 0) - now;
-		
-		if (timeUntil < 0)
-			timeUntil += 86400000; // it's after 9:00PM, try 9:00PM tomorrow.
-
-
-		var hours = ((timeUntil / (1000*60*60)) % 24);
-		var minutes = ((timeUntil / (1000*60)) % 60);
-		var seconds = (timeUntil / 1000) % 60;
-		
-		bot.sendMessage({
-			to: channelID,
-			message: "There are " + Math.floor(hours) + " hours, " + Math.floor(minutes) + " minutes, and " + Math.floor(seconds) + " seconds until the guild mission starts"
-		})
-	}
-	
-	if (messageParts[0] === userPre + "remind") {
-		
-		if (reminderCount > 0)
-			return
-		
-		reminderCount++;
-		var now = new Date();
-		var timeUntil = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 30, 0, 0) - now;
-		
-		if (timeUntil < 0) {
-			timeUntil += 86400000; // it's after 9:00PM, try 9:00PM tomorrow.
-			reminderCount = 0;
-		}
-		
-		setTimeout(guildReminder, timeUntil, channelID)
-		
-	    bot.sendMessage({
-		to: channelID,
-		message: "Reminder has been set."
-	    });
-	}
-	
 	if (messageParts[0] === userPre + "info") {
 		bot.sendMessage({
 			to: channelID,
@@ -297,11 +257,11 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 	
 	if (userID === 151809530047496203) {
 		for (int i = 0; i < messageParts.length; i++) {
-			if (messageParts[i] === FUCK) {
+			if (messageParts[i] === "FUCK") {
 				bot.sendMessage({
 					to: channelID,
 					message: "Nick, please calm down."
-				})
+				});
 			}
 		}
 	}
@@ -372,19 +332,6 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 			to: channelID,
 			message: replyID + "Reminder at" + new Date() + " " + statement
 		})
-	}
-	
-	function guildReminder(channelID) {
-		var id = channelID;
-		
-		bot.sendMessage({
-			to: channelID,
-			message: "@everyone the guild mission will begin in 30 minutes!"
-		})
-
-	    reminderCount = 0;
-		
-		setInterval(guildReminder, 86400000, id)
 	}
 	
 	function listVoiceChannels(server, userID) {
