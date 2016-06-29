@@ -295,6 +295,17 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		});
 	}
 	
+	if (userID === 151809530047496203) {
+		for (int i = 0; i < messageParts.length; i++) {
+			if (messageParts[i] === FUCK) {
+				bot.sendMessage({
+					to: channelID,
+					message: "Nick, please calm down."
+				})
+			}
+		}
+	}
+	
 	var MLGSONGS = [
 		"./Music/MLG/2SAD4ME.mp3",
 		"./Music/MLG/NUKE.mp3",
