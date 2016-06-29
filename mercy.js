@@ -291,9 +291,7 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 	if (messageParts[0] === userPre + "gay") {
 		bot.sendMessage({
 			to: channelID,
-			file: "./Reaction Images/HAHGay.gif",
-			filename: "HahGay.gif",
-			message: "Hah!  GAAAAAAAAAAAAAAAAAY!"
+			message: "http://i.giphy.com/ToMjGpn0Si90OyYBtny.gif"
 		});
 	}
 	
