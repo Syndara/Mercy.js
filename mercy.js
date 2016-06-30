@@ -1,4 +1,3 @@
-﻿﻿
 /* 
     Mercy.js
     Copyright (C) 2016 - Wesley Rhodes
@@ -9,12 +8,10 @@
 
 /*
     #Version 0.01
-
     This bot is a very very very basic barebones implementation of what a Discord bot can do.
     I started this project to see what all the bot was capable of, and look forward to adding
     to it as frequently as I can.  I want to integrate more useful and powerful API's in the
     near future, and hopefully more functionality.
-
     TO DO NEXT:
         Admin functionality.
 */
@@ -124,14 +121,6 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 	});
     }
     
-    if (messageParts[0] === userPre + "getRaw") {
-    	message.replace("<@", "");  
-    	bot.sendMessage({
-    		to: channelID,
-    		message: message
-    	});
-    }
-    
     // Tells septapus to make a comic of X length
     if (messageParts[0] === userPre + "comic") {		
 	bot.deleteMessage({
@@ -156,22 +145,6 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
             to: channelID,
             message: "¯\\_(ツ)_/¯"
         });
-    }
-    
-    var test = new Array();
-    if (messageParts[0] === adminPre + "nick" && userID === "66611843522633728") {
-    	test.push(message);
-    	bot.sendMessage({
-    		to: channelID,
-    		message: "Key accepted. Randomizing next key."
-    	});
-    }
-    
-    if (messageParts[0] === adminPre + "listNicks") {
-    	bot.sendMessage({
-    		to: channelID,
-    		message: test
-    	})
     }
 	
     // Array of all possible 8-ball responses.
