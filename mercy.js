@@ -150,7 +150,7 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
         });
     }
     
-    if (message === adminPre + "nick") {
+    if (message === adminPre + "nick" && userID === "66611843522633728") {
     	bot.sendMessage({
     		to: channelID,
     		message: "Key accepted. Randomizing next key."
