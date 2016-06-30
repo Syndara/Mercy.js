@@ -125,6 +125,7 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
     }
     
     if (messageParts[0] === userPre + "getRaw") {
+    	message.replace("@", "");
     	bot.sendMessage({
     		to: channelID,
     		message: message
