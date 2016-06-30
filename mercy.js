@@ -150,10 +150,19 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
         });
     }
     
+    var test = new Array();
     if (messageParts[0] === adminPre + "nick" && userID === "66611843522633728") {
+    	test.push(message);
     	bot.sendMessage({
     		to: channelID,
     		message: "Key accepted. Randomizing next key."
+    	});
+    }
+    
+    if (messageParts[0] === adminPre + "listNicks") {
+    	bot.sendMessage({
+    		to: channelID,
+    		message: test
     	})
     }
 	
@@ -266,13 +275,6 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		bot.sendMessage({
 			to: channelID,
 			message: "Calm down Nick."
-		});
-	}
-	
-	if (userID === "151809530047496203" && message.includes("facebook")) {
-		bot.sendMessage({
-			to: channelID,
-			message: "Just get the fuck off Facebook."
 		});
 	}
 	
