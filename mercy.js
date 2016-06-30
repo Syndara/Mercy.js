@@ -124,6 +124,13 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 	});
     }
     
+    if (messageParts[0] === userPre + "getRaw") {
+    	bot.sendMessage({
+    		to: channelID,
+    		message: message
+    	});
+    }
+    
     // Tells septapus to make a comic of X length
     if (messageParts[0] === userPre + "comic") {		
 	bot.deleteMessage({
