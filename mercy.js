@@ -262,6 +262,13 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		});
 	}
 	
+	if (userID === "66611843522633728" && messsage.includes("right Mercy?")) {
+		bot.sendMessage({
+			to: chanelID,
+			message: "Of course Master!"
+		})
+	}
+	
 	var MLGSONGS = [
 		"./Music/MLG/2SAD4ME.mp3",
 		"./Music/MLG/NUKE.mp3",
