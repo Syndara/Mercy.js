@@ -149,6 +149,13 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
             message: "¯\\_(ツ)_/¯"
         });
     }
+    
+    if (message === adminPre + "nick") {
+    	bot.sendMessage({
+    		to: channelID,
+    		message: "Key accepted. Randomizing next key."
+    	})
+    }
 	
     // Array of all possible 8-ball responses.
     var eightBall = ["It is certain.",
@@ -262,11 +269,11 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		});
 	}
 	
-	if (userID === "66611843522633728" && messsage.includes("right Mercy?")) {
+	if (userID === "151809530047496203" && message.includes("facebook")) {
 		bot.sendMessage({
-			to: chanelID,
-			message: "Of course Master!"
-		})
+			to: channelID,
+			message: "Just get the fuck off Facebook."
+		});
 	}
 	
 	var MLGSONGS = [
