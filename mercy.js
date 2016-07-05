@@ -34,11 +34,33 @@ var debugMode = 0
 var DiscordClient = require('discord.io');
 var request = require('request');
 
+// Keep app awake
+var http = require("http");
+setInterval(function() {
+    http.get("http://mercy-js.herokuapp.com/");
+	console.log("pinged");
+}, 5000); // every 5 minutes (300000)
+
+// HEROKU THINGS
+var express = require('express');
+var app = express();
+
+app.set('port', (process.env.PORT || 5000));
+
+app.use(express.static(__dirname + '/public'));
+
+// views is directory for all template files
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
 
 // Starting the bot with the supplied token.
 var bot = new DiscordClient({
     autorun: true,
-    token: AuthInfo.token
+    token: process.env.TOKEN
 });
 
 // Setting command prefixes.
