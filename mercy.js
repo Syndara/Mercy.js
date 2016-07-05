@@ -1,3 +1,4 @@
+﻿﻿
 /* 
     Mercy.js
     Copyright (C) 2016 - Wesley Rhodes
@@ -8,10 +9,12 @@
 
 /*
     #Version 0.01
+
     This bot is a very very very basic barebones implementation of what a Discord bot can do.
     I started this project to see what all the bot was capable of, and look forward to adding
     to it as frequently as I can.  I want to integrate more useful and powerful API's in the
     near future, and hopefully more functionality.
+
     TO DO NEXT:
         Admin functionality.
 */
@@ -31,33 +34,11 @@ var debugMode = 0
 var DiscordClient = require('discord.io');
 var request = require('request');
 
-// Keep app awake
-var http = require("http");
-setInterval(function() {
-    http.get("http://mercy-js.herokuapp.com/");
-	console.log("pinged");
-}, 5000); // every 5 minutes (300000)
-
-// HEROKU THINGS
-var express = require('express');
-var app = express();
-
-app.set('port', (process.env.PORT || 5000));
-
-app.use(express.static(__dirname + '/public'));
-
-// views is directory for all template files
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
-});
 
 // Starting the bot with the supplied token.
 var bot = new DiscordClient({
     autorun: true,
-    token: process.env.TOKEN
+    token: AuthInfo.token
 });
 
 // Setting command prefixes.
@@ -193,10 +174,12 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
     }
 
 	// This function reconstructs the user's message and parses it with cleverbot-node.
-    if (message.includes("<@183014333742186497>") && userID !== "@127296623779774464") {
+    if (message.includes("Mercy") || message.includes("mercy")) {
         // Reconstruct phrase.
         statement = constructPhrase(messageParts);
-		statement.replace("<@183014333742186497>", "");       
+		statement = statement.replace("mercy", "clever bot");
+		statement = statement.replace("Mercy", "clever bot");
+		console.log(statement);
 		// Send the formatted string to cleverbot-node and send the response to the channel.
         Cleverbot.prepare(function () {
             cleverBot.write(statement, function (response) {
@@ -211,11 +194,14 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 	// Calls the cat function to get a random cat image.
 	if (messageParts[0] === userPre + "cat") {
 		var cat = getCats("http://www.random.cat/meow");
-		
+	}
+	
+	if (messageParts[0] === userPre + "dog") {
+		var dog = getDogs("http://random.dog");
 	}
 	
 	if (messageParts[0] === userPre + "remindMe") {
-		statement = constructPhrase(messageParts);
+		statement = constructCommand(messageParts);
 		
 		var time = messageParts[1];
 		
@@ -252,11 +238,15 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		});
 	}
 	
-	if (userID === "151809530047496203" && message.includes("FUCK")) {
-		bot.sendMessage({
-			to: channelID,
-			message: "Calm down Nick."
-		});
+	if (userID === 151809530047496203) {
+		for (var i = 0; i < messageParts.length; i++) {
+			if (messageParts[i] === "FUCK") {
+				bot.sendMessage({
+					to: channelID,
+					message: "Nick, please calm down."
+				});
+			}
+		}
 	}
 	
 	var MLGSONGS = [
@@ -271,6 +261,18 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		var ch = listVoiceChannels(channelID, userID);
 		var song = MLGSONGS[Math.floor(Math.random() * MLGSONGS.length)];
 		playSong(ch, song)
+	}
+
+	if (message.includes("<@!183014333742186497>")) {
+		Cleverbot.prepare(function () {
+			message.replace("<@!183014333742186497>", "")
+            cleverBot.write(message, function (response) {
+                bot.sendMessage({
+                    to: channelID,
+                    message: response.message
+                });
+            });
+        });
 	}
 	
 	// Simple function just returns a date object at the current time.
@@ -298,13 +300,41 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		}
 		})
 	}
+	
+	function getDogs(theURL) {
+		var request = require('request');
+		request(theURL, function (error, response, body) {
+		if (!error && response.statusCode == 200) {
+			var values = body.split("'");
+			var dog = values[3];
+			
+			bot.sendMessage({
+				to: channelID,
+				message: theURL + "/" + values[1]
+			});
+			
+		}
+		})
+	}
 
     
 	
-	// Reconstructs the user's phrase.
-	function constructPhrase(userPhrase) {
+	// Reconstructs the user's command.
+	function constructCommand(userPhrase) {
 		var statement = "";
         for (i = 1; i <= userPhrase.length; i++) {
+            if (i !== userPhrase.length) {
+                statement += userPhrase[i] + " ";
+            }
+        }
+		
+		return statement;
+	}
+	
+	// Reconstruct user's message.
+	function constructPhrase(userPhrase) {
+		var statement = "";
+        for (i = 0; i <= userPhrase.length; i++) {
             if (i !== userPhrase.length) {
                 statement += userPhrase[i] + " ";
             }
