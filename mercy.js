@@ -194,24 +194,6 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
             message: replyID + "You asked: " + question + "I respond with: " + response
         });
     }
-
-	// This function reconstructs the user's message and parses it with cleverbot-node.
-    if (message.includes("Mercy") || message.includes("mercy")) {
-        // Reconstruct phrase.
-        statement = constructPhrase(messageParts);
-		statement = statement.replace("mercy", "clever bot");
-		statement = statement.replace("Mercy", "clever bot");
-		console.log(statement);
-		// Send the formatted string to cleverbot-node and send the response to the channel.
-        Cleverbot.prepare(function () {
-            cleverBot.write(statement, function (response) {
-                bot.sendMessage({
-                    to: channelID,
-                    message: response.message
-                });
-            });
-        });
-    }
 	
 	// Calls the cat function to get a random cat image.
 	if (messageParts[0] === userPre + "cat") {
