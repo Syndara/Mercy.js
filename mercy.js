@@ -204,6 +204,13 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		var dog = getDogs("http://random.dog");
 	}
 	
+	if (messageParts[0] === userPre + "catdog") {
+		bot.sendMessage({
+			to: channelID,
+			message: "http://vignette4.wikia.nocookie.net/chroniclesofillusion/images/6/6a/Catdog.png"
+		})
+	}
+	
 	if (messageParts[0] === userPre + "remindMe") {
 		statement = constructCommand(messageParts);
 		
