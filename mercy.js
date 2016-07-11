@@ -158,16 +158,6 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 	}
 	
 	if (messageParts[0] === userPre + "photoSpam") {
-		if (messageParts[1] === "on" || messageParts[1] === "off") {
-			if (messageParts[1] === "on") {
-				spam = true;
-				handler.handleSpam(bot, channelID, spam);
-			}
-			
-			else if (messageParts[1] === "off") {
-				spam = false;
-				handler.handleSpam(bot, channelID, spam);
-			}
-		}
+		handler.handleSpam(bot, channelID);
 	}
 })
