@@ -4,6 +4,7 @@ var cat = require("./scripts/Pictures/cat.js")
 var photo = require("./scripts/Pictures/photoBucket.js")
 var dog = require("./scripts/Pictures/dog.js")
 var functions = require("./scripts/Functions/functions.js")
+var spam = false;
 
 module.exports = {
 	handleFourWalled : function(messageParts, bot, channelID, sfw) {
