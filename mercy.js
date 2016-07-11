@@ -157,7 +157,7 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		sfw = handler.handleSFW(bot, channelID, messageParts);
 	}
 	
-	if (messageParts[0] === userPre + "photoSpam) {
+	if (messageParts[0] === userPre + "photoSpam") {
 		if (messageParts[1] === "on" || messageParts[1] === "off") {
 			if (messageParts[1] === "on") {
 				spam = true;
