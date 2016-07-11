@@ -5,6 +5,7 @@ var photo = require("./scripts/Pictures/photoBucket.js")
 var dog = require("./scripts/Pictures/dog.js")
 var functions = require("./scripts/Functions/functions.js")
 var spam = false;
+var time;
 
 module.exports = {
 	handleFourWalled : function(messageParts, bot, channelID, sfw) {
@@ -123,10 +124,14 @@ module.exports = {
 		functions.playSong(bot, ch, song)
 	},
 	
-	handleSpam : function(bot, channelID, time) {
+	handleSpam : function(bot, channelID, messageParts) {
 		
-		if (time >= 5) {
-			time = time * 1000;
+		if (messageParts.length = 2) {
+			time = messageParts[1] * 1000;
+		}
+		
+		else {
+			time = 20000;
 		}
 		
 		if (!spam) {
@@ -135,7 +140,7 @@ module.exports = {
 			spamOn = setInterval(photo.getPhoto, time, bot, "201782767841837056");
 			bot.sendMessage({
 				to: channelID,
-				message: "Photo spam started 8D"
+				message: "Pasting a photo every " + time / 1000 + " seconds"
 			});	
 		}
 		
