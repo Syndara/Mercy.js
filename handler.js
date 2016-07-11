@@ -125,7 +125,7 @@ module.exports = {
 	
 	handleSpam : function(bot, channelID, time) {
 		
-		if (time >= 10) {
+		if (time >= 5) {
 			time = time * 1000;
 		}
 		
