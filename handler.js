@@ -120,5 +120,25 @@ module.exports = {
 		var song = MLGSONGS[Math.floor(Math.random() * MLGSONGS.length)];
 		
 		functions.playSong(bot, ch, song)
+	},
+	
+	handleSpam : function(bot, channelID, switch) {
+		if (switch) {
+			setInterval(photo.getPhoto(), 10000, bot, "201782767841837056");
+			bot.sendMessage({
+				to: channelID,
+				message: "Photo spam started 8D"
+			});	
+		}
+		
+		else {
+			bot.sendMessage({
+				to: channelID,
+				message: "Ending the spam"
+			});
+		}
+		
 	}
+	
+	
 }
