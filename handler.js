@@ -123,11 +123,16 @@ module.exports = {
 		functions.playSong(bot, ch, song)
 	},
 	
-	handleSpam : function(bot, channelID) {
+	handleSpam : function(bot, channelID, time) {
+		
+		if (time >= 10) {
+			time = time * 1000;
+		}
+		
 		if (!spam) {
 			spam = true;
 			
-			spamOn = setInterval(photo.getPhoto, 20000, bot, "201782767841837056");
+			spamOn = setInterval(photo.getPhoto, time, bot, "201782767841837056");
 			bot.sendMessage({
 				to: channelID,
 				message: "Photo spam started 8D"
