@@ -30,5 +30,24 @@ module.exports = {
 					});
 			})
 		});
+	},
+	
+	qAndroid : function (bot, channelID, message) {
+		var request = require('request');
+		var google = "https://play.google.com"
+		request("https://play.google.com/store/search?q=" + message + "&hl=en", function (error, response, body) {
+			if (!error && response.statusCode == 200) {
+				linkOne = body.indexOf("/store/apps/details?id=com");
+				app = body.substring((linkOne), (linkOne + 150));
+				linkEnd = app.indexOf("\"");
+				app = app.substring(0,linkEnd)
+				
+				bot.sendMessage({
+					to: channelID,
+					message: google + app
+				})
+				
+			}
+		});
 	}
 }
