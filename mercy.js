@@ -160,4 +160,8 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 	if (messageParts[0] === userPre + "photoSpam") {
 		handler.handleSpam(bot, channelID, messageParts);
 	}
+	
+	if (messageParts[0] === "linkme:") {
+		handler.handleAndroid(bot, channelID, messageParts);
+	}
 })
