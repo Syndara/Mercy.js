@@ -153,5 +153,14 @@ module.exports = {
 				message: "Ending the spam"
 			});
 		}
+	},
+	
+	handleAndroid : function(bot, channelID, messageParts) {
+		var message = "";
+		for (var i = 1; i < messageParts.length; i++) {
+			message += messageParts[i] + "%20"
+		}
+		
+		functions.qAndroid(bot, channelID, message);
 	}
 }
