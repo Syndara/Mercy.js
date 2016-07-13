@@ -138,7 +138,7 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 	}
 
 	// Fires off Cleverbot to respond to user message.
-	if (message.includes("<@!183014333742186497>")) {
+	if (message.includes("<@183014333742186497>")) {
 		handler.handleClever(bot, channelID, Cleverbot, message);
 	}
 	
