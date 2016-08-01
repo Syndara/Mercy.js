@@ -108,23 +108,11 @@ module.exports = {
 		setTimeout(functions.makeComic, 1000, bot, channelID, messageParts);
 	},
 	
-	handleMLG : function(bot, userID, channelID) {
-		
-		var MLGSONGS = [
-		"./Music/MLG/2SAD4ME.mp3",
-		"./Music/MLG/NUKE.mp3",
-		"./Music/MLG/SANIC.mp3",
-		"./Music/MLG/SAY.mp3",
-		"./Music/MLG/TRIPLE.mp3",
-		"./Music/MLG/WOMBO.mp3"]
-		
-		var ch = functions.listVoiceChannels(bot, channelID, userID);
-		var song = MLGSONGS[Math.floor(Math.random() * MLGSONGS.length)];
-		
-		functions.playSong(bot, ch, song)
-	},
-	
 		handleTest : function(bot, userID, channelID) {
+			
+		if (channelID === "209656708761518080") {
+			channelID = "200095198573887489"
+		}
 		
 		var OSongs = [
 		"./Music/Other/O_Short.mp3",
@@ -138,6 +126,10 @@ module.exports = {
 	},
 	
 	handleYT : function(bot, userID, channelID) {
+		
+		if (channelID === "209656708761518080") {
+			channelID = "200095198573887489"
+		}
 		
 		var YT = [
 		"./Music/Other/SwingBobby.mp3",
