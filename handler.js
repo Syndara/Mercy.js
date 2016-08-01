@@ -117,7 +117,8 @@ module.exports = {
 		var OSongs = [
 		"./Music/Other/O_Short.mp3",
 		"./Music/Other/O_Long.mp3",
-		"./Music/Other/O_Reverse.mp3"]
+		"./Music/Other/O_Reverse.mp3",
+		"./Music/Other/O.mp3"]
 		
 		var ch = functions.listVoiceChannels(bot, channelID, userID);
 		var song = OSongs[Math.floor(Math.random() * OSongs.length)];
