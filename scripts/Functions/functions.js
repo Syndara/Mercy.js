@@ -7,18 +7,25 @@ module.exports = {
 	},
 	
 	listVoiceChannels : function (bot, server, userID) {
-		var channels = bot.servers[server].channels;
-		var i = 0;
-		for (var channel in channels) {
-			if (channels[channel].type === 'voice') {
-				var users = Object.getOwnPropertyNames(channels[channel].members);
-				
-				for (var i = 0; i < users.length; i++) {
-					if (userID === users[i])
+		try {
+			var channels = bot.servers[server].channels;
+			var i = 0;
+			for (var channel in channels) {
+				if (channels[channel].type === 'voice') {
+					var users = Object.getOwnPropertyNames(channels[channel].members);
+					
+					for (var i = 0; i < users.length; i++) {
+						if (userID === users[i])
 						return channel;
+					}
 				}
 			}
 		}
+		
+		catch (TypeError) {
+			
+		}
+		
 	},
 	
 	playSong : function (bot, channel, songName) {
