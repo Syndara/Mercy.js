@@ -134,7 +134,7 @@ module.exports = {
 		var YT = [
 		"./Music/Other/SwingBobby.mp3",
 		"./Music/Other/Weaboo.mp3",
-		"./Music/Other/What.mp3"]
+		"./Music/Other/WHAT.mp3"]
 		
 		var ch = functions.listVoiceChannels(bot, channelID, userID);
 		var song = YT[Math.floor(Math.random() * YT.length)];
