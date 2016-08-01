@@ -133,11 +133,6 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 	}
 	
 	// Plays a random MLG song if used in the primary chat channel.
-	if (messageParts[0] === userPre + "MLG") {
-		handler.handleMLG(bot, userID, channelID);
-	}
-	
-	// Plays a random MLG song if used in the primary chat channel.
 	if (messageParts[0] === userPre + "O") {
 		handler.handleTest(bot, userID, channelID);
 	}
