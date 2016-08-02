@@ -74,7 +74,7 @@ module.exports = {
 			to: channelID,
 			message: "Hello.  I am Mercy, created by Syndara#4651.  I'm an open source node-js Discord bot."  
 			+ "Progress and documentation can be found for me at https://github.com/Syndara/Mercy.js.  I'm "
-			+ "running on Heroku."
+			+ "running on Heroku. You can add me using this link: https://discordapp.com/oauth2/authorize?client_id=183014313450143744&scope=bot&permissions=0"
 		})
 	},
 	
