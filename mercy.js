@@ -155,11 +155,6 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 		handler.handleFourWalled(messageParts, bot, channelID, sfw, cheerio);
 	}
 	
-	// Switches sfw on or off
-	if (messageParts[0] === userPre + "sfw") {
-		sfw = handler.handleSFW(bot, channelID, messageParts);
-	}
-	
 	if (messageParts[0] === userPre + "photoSpam") {
 		handler.handleSpam(bot, channelID, messageParts);
 	}
