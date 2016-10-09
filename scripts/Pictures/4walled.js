@@ -15,7 +15,7 @@ module.exports = {
 				
 				console.log(body.length);
 				
-				if (body.length < 5000) {
+				if (body.length <= 4387) {
 					bot.sendMessage({
 						to: channelID,
 						message: "No images found"
