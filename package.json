@@ -5,11 +5,12 @@
   "main": "mercy.js",
   "dependencies": {
     "cleverbot-node": "^0.2.2",
-    "discord.io": "^1.11.1",
+    "discord.io": "^2.2.3",
     "express": "^4.13.4",
     "moment": "^2.13.0",
     "moment-timezone": "^0.5.4",
-    "request": "^2.72.0"
+    "request": "^2.72.0",
+	"cheerio": "^0.22.0"
   },
   "devDependencies": {},
   "scripts": {
