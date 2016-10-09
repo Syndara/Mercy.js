@@ -8,15 +8,12 @@
 */
 
 /*
-    #Version 0.01
+    #Version 0.75
 
     This bot is a very very very basic barebones implementation of what a Discord bot can do.
     I started this project to see what all the bot was capable of, and look forward to adding
     to it as frequently as I can.  I want to integrate more useful and powerful API's in the
     near future, and hopefully more functionality.
-
-    TO DO NEXT:
-        Admin functionality.
 */
 
 // auth.json is used to store token information in token : "<Your Token>".
@@ -29,8 +26,9 @@ cleverBot = new Cleverbot;
 var debugMode = 0
 
 // Neccesary dependency.
-var DiscordClient = require('discord.io');
+var Discord = require('discord.io');
 var request = require('request');
+var cheerio = require('cheerio');
 
 // Handler
 var handler = require("./handler.js");
@@ -59,7 +57,7 @@ app.listen(app.get('port'), function() {
 });
 
 // Starting the bot with the supplied token.
-var bot = new DiscordClient({
+var bot = new Discord.Client({
     autorun: true,
     token: process.env.TOKEN
 });
@@ -154,7 +152,7 @@ bot.on('message', function (user, userID, channelID, message, rawEvent) {
 	
 	// Pastes a picture from 4walled based on user input.
 	if (messageParts[0] === userPre) {
-		handler.handleFourWalled(messageParts, bot, channelID, sfw);
+		handler.handleFourWalled(messageParts, bot, channelID, sfw, cheerio);
 	}
 	
 	// Switches sfw on or off
