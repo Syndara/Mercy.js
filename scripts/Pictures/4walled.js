@@ -13,6 +13,17 @@ module.exports = {
 				//imageEnd = imageUrl.indexOf("target") - 2
 				//imageUrl = imageUrl.substring(0, imageEnd)
 				
+				console.log(body.length);
+				
+				if (body.length < 5000) {
+					bot.sendMessage({
+						to: channelID,
+						message: "No images found"
+					})
+					
+					return;
+				}
+				
 				var parsed = cheerio.load(body);
 				
 				var images = [];
