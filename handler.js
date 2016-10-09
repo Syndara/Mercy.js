@@ -8,7 +8,7 @@ var spam = false;
 var time;
 
 module.exports = {
-	handleFourWalled : function(messageParts, bot, channelID, sfw) {
+	handleFourWalled : function(messageParts, bot, channelID, sfw, cheerio) {
 		var keywords = "";
 		
 		for (var i = 1; i < messageParts.length; i++) {
@@ -19,14 +19,14 @@ module.exports = {
 		}
 		
 		if (sfw) {
-			var URL = "https://4walled.cc/search.php?tags=" + keywords + "&board=&width_aspect=&searchstyle=larger&sfw=0&search=random"
+			var URL = "https://4walled.cc/search.php?tags=" + keywords + "&board=&width_aspect=&searchstyle=larger&sfw=0&search=search"
 		}
 		
 		else {
-			var URL = "https://4walled.cc/search.php?tags=" + keywords + "&board=&width_aspect=&searchstyle=larger&sfw=&search=random"
+			var URL = "https://4walled.cc/search.php?tags=" + keywords + "&board=&width_aspect=&searchstyle=larger&sfw=&search=search"
 		}
 		
-		walled.getWP(URL, bot, channelID);	
+		walled.getWP(URL, bot, channelID, cheerio);	
 	},
 	
 	handleSFW : function(bot, channelID, messageParts) {
