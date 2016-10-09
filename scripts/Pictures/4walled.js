@@ -24,7 +24,7 @@ module.exports = {
 				
 				console.log(images);
 				
-				var imageUrl = "http:" + images[Math.floor(Math.random() * images.length) + 5];
+				var imageUrl = "http:" + images[Math.floor(Math.random() * images.length) + 6];
 				console.log(imageUrl);
 				
 				
