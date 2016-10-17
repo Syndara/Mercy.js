@@ -51,7 +51,8 @@ module.exports = {
             cleverBot.write(message, function (response) {
                 bot.sendMessage({
                     to: channelID,
-                    message: response.message
+                    message: response.message,
+		    tts: true
                 });
             });
         });
