@@ -2,6 +2,7 @@
 var walled = require("./scripts/Pictures/4walled.js")
 var cat = require("./scripts/Pictures/cat.js")
 var photo = require("./scripts/Pictures/photoBucket.js")
+var cheap = require("./scripts/cheap.js")
 var dog = require("./scripts/Pictures/dog.js")
 var functions = require("./scripts/Functions/functions.js")
 var spam = false;
@@ -51,8 +52,7 @@ module.exports = {
             cleverBot.write(message, function (response) {
                 bot.sendMessage({
                     to: channelID,
-                    message: response.message,
-		    tts: true
+                    message: response.message
                 });
             });
         });
@@ -182,5 +182,14 @@ module.exports = {
 		}
 		
 		functions.qAndroid(bot, channelID, message);
+	},
+	
+	handleCheap : function(bot, channelID, messageParts, cheerio) {
+		var message = "";
+		for (var i = 1; i < messageParts.length; i++) {
+			message += messageParts[i] + " ";
+		}
+		
+		cheap.cheap(bot, channelID, message, cheerio)
 	}
 }
