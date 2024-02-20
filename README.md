@@ -1,7 +1,7 @@
 # Mercy.js
 WIP bot for Discord.
 
-Author: Wesley Rhodes
+Author: Ghoulbie
 
 Version: v0.4.0b 07/12/2016
 
